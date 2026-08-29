@@ -4,7 +4,13 @@ import json, os, sys, uuid, argparse
 from datetime import datetime
 
 import os
-DATA_DIR = os.path.join(os.environ.get('DSH_WORKSPACE') or os.environ.get('OPENCLAW_WORKSPACE') or os.path.expanduser('~/.openclaw/workspace'), "memory", "list-data")
+def _ws_fallback():
+    if os.environ.get('OPENCLAW_GATEWAY_PORT') or os.environ.get('OPENCLAW_SERVICE_KIND'):
+        return os.path.expanduser('~/.openclaw/workspace')
+    if os.path.isdir(os.path.expanduser('~/.dsh')):
+        return os.path.expanduser('~/.dsh/workspace')
+    return os.path.expanduser('~/.openclaw/workspace')
+DATA_DIR = os.path.join(os.environ.get('DSH_WORKSPACE') or os.environ.get('OPENCLAW_WORKSPACE') or _ws_fallback(), "memory", "list-data")
 
 def _path(t):
     return os.path.join(DATA_DIR,f"{t}.json")
