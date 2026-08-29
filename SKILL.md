@@ -4,7 +4,7 @@ description: 📋 List · 智能表单 — 通用记账本与信息汇总工具�
 ---
 > **🌍 环境兼容（OpenClaw / DSH 双端）**
 > - **OpenClaw**：脚本在技能目录下执行（`python3 scripts/list.py`），数据默认 `~/.openclaw/workspace/memory/list-data/`，定时提醒走 `openclaw cron`。
-> - **DSH**：无 `openclaw` CLI，数据走 `$DSH_WORKSPACE/memory/list-data/`（默认 `~/.dsh/workspace/memory/list-data/`），定时提醒改用 DSH 调度。
+> - **DSH**：无 `openclaw` CLI，数据走 `$DSH_WORKSPACE/memory/list-data/`（默认 `~/.dsh/workspace/memory/list-data/`）。**定时提醒请先安装 BigTimer 技能**：`dsh plugin add github:kobenfang/BigTimer`，然后用 `bigtimer.py add` 创建定时任务。
 
 
 # 📋 智能表单 · list
