@@ -3,7 +3,8 @@
 import json, os, sys, uuid, argparse
 from datetime import datetime
 
-DATA_DIR = os.path.join(os.path.dirname(__file__),"..","..","memory","list-data")
+import os
+DATA_DIR = os.path.join(os.environ.get('DSH_WORKSPACE') or os.environ.get('OPENCLAW_WORKSPACE') or os.path.expanduser('~/.openclaw/workspace'), "memory", "list-data")
 
 def _path(t):
     return os.path.join(DATA_DIR,f"{t}.json")
